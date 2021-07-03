@@ -1,5 +1,8 @@
 # Weather_api
 
+Save data for specific cities in JSON format into a postgresql database.
+The data takes time to come and save, so there is the GET request, which returns how many percent has already been saved, considering that there are 167 cities to get on each request
+
 ## How to run
 
 To start the application run the following command:
@@ -7,7 +10,7 @@ To start the application run the following command:
 python3 main.py
 ```
 
-After this, the server will be running on http://127.0.0.1:5000.
+After this, the server will be running on http://127.0.0.1:5000/.
 
 ### GET request
 
@@ -51,3 +54,15 @@ If the id does not exist, will make the request to the WeatherAPI, and after com
 When POST request is made, the data is collect from WeatherAPI and saved on postgreSQL database, using the following schema.
 
 ![alt text](https://github.com/nayent/images/blob/main/postgresql.png?raw=true)
+
+Example:
+
+![alt text](https://github.com/nayent/images/blob/main/all_data.png?raw=true)
+
+## How to test
+
+To run all tests just needed to run
+
+```bash
+python3 -m unittest -v
+```
