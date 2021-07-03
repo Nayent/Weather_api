@@ -12,9 +12,9 @@ After this, the server will be running on http://127.0.0.1:5000.
 ### GET request
 
 To make GET request run:
-'''bash
+```bash
 curl http://127.0.0.1:5000/?id=1
-'''
+```
 
 Passing ID as INTEGER
 
@@ -32,9 +32,9 @@ If does not exists, it will return an error message.
 ### POST request
 
 To make POST request run:
-'''bash
+```bash
 curl -X POST http://127.0.0.1:5000/?id=1
-'''
+```
 
 Or in Postman
 
