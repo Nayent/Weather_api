@@ -55,9 +55,9 @@ When POST request is made, the data is collect from WeatherAPI and saved on post
 
 ![alt text](https://github.com/nayent/images/blob/main/postgresql.png?raw=true)
 
-Example:
-
-![alt text](https://github.com/nayent/images/blob/main/all_data.png?raw=true)
+* The id is the Id that the user pass on POST
+* The date is the time the request was made
+* The data is all the data from WeatherAPI
 
 ## How to test
 
