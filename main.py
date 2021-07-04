@@ -4,10 +4,9 @@ from sqlalchemy import func
 
 from models import Weather, app, db
 from weather_data import city_ids, api_key
-from lib import percent, get_data, commit_psql
+from lib import percent, commit_psql, get_data
 
 import requests
-import time
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -16,7 +15,7 @@ def weather_api():
         post_data = request.args.get('id')
 
         if not post_data:
-            return jsonify({'Error': 'Id is missing'})
+            return jsonify({'Error': 'Id is missing'}), 400
 
         id = int(post_data)
 
@@ -30,7 +29,7 @@ def weather_api():
             perc = percent(count[0])
             return jsonify({'Percent': f'{perc}%'})
         else:
-            return jsonify({'Error': f'There is no ID {id}'})
+            return jsonify({'Error': f'There is no ID {id}'}), 404
             
 
     elif request.method == 'POST':
@@ -38,7 +37,7 @@ def weather_api():
         post_data = request.args.get('id')
 
         if not post_data:
-            return jsonify({'Error': 'Id is missing'})
+            return jsonify({'Error': 'Id is missing'}), 400
 
         id = int(post_data)
 
@@ -46,10 +45,9 @@ def weather_api():
         data_db = [data.id for data in data_db]
         
         if id in data_db:
-            return jsonify({'Error': 'Id already exist'})
+            return jsonify({'Error': 'Id already exist'}), 400
 
         full_data = []
-        remains = 166
 
         date = str(datetime.now())[:19]
 
@@ -66,9 +64,6 @@ def weather_api():
 
             full_data.append(data)
 
-            print('remain %d' % remains)
-            remains -= 1
-
             # Update with new city data
             data_update = Weather.query.filter_by(id=id).update(dict(data=full_data))
             db.session.commit()
@@ -76,7 +71,7 @@ def weather_api():
         return 'All Done'
 
     else:
-        return jsonify({'Error': 'No method available'})
+        return jsonify({'Error': 'No method available'}), 400
 
 if __name__ == '__main__':
     app.run()

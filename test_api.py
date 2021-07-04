@@ -17,7 +17,7 @@ class TestApi(unittest.TestCase):
 
     def test_getData_withow_id(self):
         r = requests.get(TestApi.API_URL)
-        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.status_code, 400)
     
 
     def test_getData_with_id(self):
@@ -27,12 +27,12 @@ class TestApi(unittest.TestCase):
 
     def test_postData_withow_id(self):
         r = requests.post(TestApi.API_URL)
-        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.status_code, 400)
     
 
     def test_postData_with_id(self):
         r = requests.post(TestApi.API_URL + TestApi.ID)
-        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.status_code, 400)
 
 
 if __name__ == '__name__':
