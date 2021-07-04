@@ -2,7 +2,7 @@ import unittest
 import requests
 
 from lib import percent, get_data
-from main import app
+from app import app
 
 
 class TestLib(unittest.TestCase):

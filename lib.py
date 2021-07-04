@@ -1,7 +1,5 @@
 from models import Weather, db
 
-import requests
-
 
 def percent(value):
     return round((value/167)*100, 2)

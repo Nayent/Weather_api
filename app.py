@@ -68,7 +68,7 @@ def weather_api():
             data_update = Weather.query.filter_by(id=id).update(dict(data=full_data))
             db.session.commit()
 
-        return 'All Done'
+        return 'All Done', 200
 
     else:
         return jsonify({'Error': 'No method available'}), 400
